@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ConsumeWebAPI.Models.StudentViewModel>
+
+@{
+  ViewData["Title"] = "HomePage";
+}
+<style>
+    *{
+        text-align:center;
+    }
+</style>
+
+<h1 style="justify-content: center; display: flex;">Student Profile Portal</h1>
+
+<p style="justify-content: end; display: flex;">
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StudentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContactNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StudentId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContactNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+                </td>
+                <td style="justify-content: space-evenly;display: flex;">
+                    @Html.ActionLink("Edit", "Edit", new {id=item.StudentId},new { @class = "btn btn-warning" }) 
+                   
+                    @Html.ActionLink("Delete", "Delete", new {id=item.StudentId}, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+@{
+    if (TempData["Success"] != null)
+    {
+        @Html.Raw(@TempData["Success"])
+    }
+}
+
+
+

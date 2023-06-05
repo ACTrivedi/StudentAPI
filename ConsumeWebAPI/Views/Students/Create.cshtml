@@ -1,0 +1,82 @@
+﻿@model ConsumeWebAPI.Models.StudentViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<style>
+   
+
+    .row {
+        display: flex;
+        justify-content: center;
+    }
+   
+   
+
+</style>
+
+<h1>Add Student Profile</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="StudentId" class="control-label"></label>
+                <input asp-for="StudentId" class="form-control" />
+                <span asp-validation-for="StudentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactNumber" class="control-label"></label>
+                <input asp-for="ContactNumber" class="form-control" />
+                <span asp-validation-for="ContactNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Age" class="control-label"></label>
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+
+            <div class="d-flex justify-content-between mt-3">
+
+                <div>
+                    <a asp-action="HomePage" class="btn btn-danger">Back to List</a>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+
+            </div>
+
+
+        </form>
+    </div>
+</div>
+
+
+
+@{
+    if (TempData["Error"] != null)
+    {
+        @Html.Raw(@TempData["Error"])
+    }
+}
+
+
+
+
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
